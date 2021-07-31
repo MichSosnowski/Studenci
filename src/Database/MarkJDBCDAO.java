@@ -231,6 +231,29 @@ public class MarkJDBCDAO {
         }
     }
 
+    public void editStudent(Students student, int idStudent) {
+        try {
+            String queryString = "UPDATE studenci SET imie = \'" + student.getFirstName() + "\', nazwisko = \'" + student.getSurname() +
+                    "\', numer_USOS = " + student.getUSOSNumber() + ", punktyI = " + student.getPointsI() + ", punktyII = " + student.getPointsII() +
+                    ", suma = " + student.getSum() + " WHERE id_studenta = " + idStudent;
+            connection = getConnection();
+            ptmt = connection.prepareStatement(queryString);
+            ptmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (ptmt != null) ptmt.close();
+                if (connection != null) connection.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void removeStudent(Students student) {
         try {
             String queryString = "DELETE FROM studenci WHERE id_studenta = " + student.getIdStudent();

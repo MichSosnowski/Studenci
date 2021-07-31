@@ -103,7 +103,31 @@ public class ShowGroup {
 
     @FXML
     public void editStudent() {
-
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            Stage dialog = new Stage();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/FXML/editStudent.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            EditStudent editStudent = loader.getController();
+            editStudent.initialize(tableView.getSelectionModel().getSelectedItem(), dialog);
+            dialog.setScene(new Scene(root, 415, 250));
+            dialog.setTitle("Edytowanie danych...");
+            dialog.setResizable(false);
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.showAndWait();
+            updateTableView();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Edycja danych");
+            alert.setHeaderText(null);
+            alert.setContentText("W celu edycji danych studenta, wybierz studenta z tabelki grupy.");
+            alert.show();
+        }
     }
 
     @FXML
@@ -111,6 +135,13 @@ public class ShowGroup {
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             MarkJDBCDAO.dbConn.removeStudent(tableView.getSelectionModel().getSelectedItem());
             updateTableView();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Usuwanie studenta");
+            alert.setHeaderText(null);
+            alert.setContentText("W celu usunięcia studenta, wybierz studenta z tabelki grupy.");
+            alert.show();
         }
     }
 

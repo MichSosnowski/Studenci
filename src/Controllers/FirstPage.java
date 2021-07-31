@@ -84,6 +84,13 @@ public class FirstPage {
                 refreshListView();
             }
         }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Usunięcie grupy");
+            alert.setHeaderText(null);
+            alert.setContentText("W celu usunięcia grupy, wybierz docelową grupę z listy.");
+            alert.show();
+        }
     }
 
     @FXML
