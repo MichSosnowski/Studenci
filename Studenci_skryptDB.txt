@@ -1,0 +1,25 @@
+DROP DATABASE IF EXISTS oceny;
+
+CREATE DATABASE oceny;
+
+USE oceny;
+
+CREATE TABLE grupy(
+      id_grupy int AUTO_INCREMENT PRIMARY KEY,
+      termin varchar(30) NOT NULL
+);
+
+CREATE TABLE studenci(
+      id_studenta int AUTO_INCREMENT PRIMARY KEY,
+      imie varchar(30) NOT NULL,
+      nazwisko varchar(30) NOT NULL,
+      numer_USOS int(6) NOT NULL,
+      punktyI int(2) NOT NULL,
+      punktyII int(2) NOT NULL,
+      suma int(3) NOT NULL,
+      ocena varchar(3) NOT NULL,
+      id_grupy int NOT NULL,
+      FOREIGN KEY (id_grupy)
+      REFERENCES grupy(id_grupy)
+      ON DELETE CASCADE
+);
