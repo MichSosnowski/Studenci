@@ -28,9 +28,11 @@ public class FirstPage {
         MarkJDBCDAO.dbConn = new MarkJDBCDAO();
         if (!MarkJDBCDAO.dbConn.checkTables()) MarkJDBCDAO.dbConn.createTables();
         String[] parts = MarkJDBCDAO.dbConn.findAllGroups().split("\n");
-        for (String part : parts) addToListView(part);
+        for (String part : parts) {
+            if (!part.isEmpty()) addToListView(part);
+        }
         listView.setOnMouseClicked((click) -> {
-            if (click.getClickCount() == 2) {
+            if (click.getClickCount() == 2 && listView.getSelectionModel().getSelectedItem() != null) {
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/FXML/showGroup.fxml"));
                 Pane pane = null;
                 try {
@@ -68,17 +70,19 @@ public class FirstPage {
 
     @FXML
     public void removeGroup() {
-        ButtonType yesButton = new ButtonType("Tak", ButtonType.YES.getButtonData());
-        ButtonType noButton = new ButtonType("Nie", ButtonType.NO.getButtonData());
-        Alert removeGroupDialog = new Alert(Alert.AlertType.CONFIRMATION, "Czy na pewno chcesz usunąć tę grupę?", yesButton, noButton);
-        removeGroupDialog.setTitle("Usuwanie grupy");
-        removeGroupDialog.setHeaderText(null);
-        Optional<ButtonType> result = removeGroupDialog.showAndWait();
-        if (result.isPresent() && result.get() == yesButton) {
-            String group = listView.getSelectionModel().getSelectedItem();
-            String[] parts = group.split(" ");
-            MarkJDBCDAO.dbConn.removeGroup(Integer.parseInt(parts[1].substring(0, parts[1].length() - 1)));
-            refreshListView();
+        if (listView.getSelectionModel().getSelectedItem() != null) {
+            ButtonType yesButton = new ButtonType("Tak", ButtonType.YES.getButtonData());
+            ButtonType noButton = new ButtonType("Nie", ButtonType.NO.getButtonData());
+            Alert removeGroupDialog = new Alert(Alert.AlertType.CONFIRMATION, "Czy na pewno chcesz usunąć tę grupę?", yesButton, noButton);
+            removeGroupDialog.setTitle("Usuwanie grupy");
+            removeGroupDialog.setHeaderText(null);
+            Optional<ButtonType> result = removeGroupDialog.showAndWait();
+            if (result.isPresent() && result.get() == yesButton) {
+                String group = listView.getSelectionModel().getSelectedItem();
+                String[] parts = group.split(" ");
+                MarkJDBCDAO.dbConn.removeGroup(Integer.parseInt(parts[1].substring(0, parts[1].length() - 1)));
+                refreshListView();
+            }
         }
     }
 
@@ -104,6 +108,8 @@ public class FirstPage {
     public void refreshListView() {
         listView.getItems().clear();
         String[] parts = MarkJDBCDAO.dbConn.findAllGroups().split("\n");
-        for (String part : parts) addToListView(part);
+        for (String part : parts) {
+            if (!part.isEmpty()) addToListView(part);
+        }
     }
 }
