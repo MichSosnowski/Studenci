@@ -67,7 +67,7 @@ public class AddStudent {
             Toolkit.getDefaultToolkit().beep();
             return;
         }
-        Students student = new Students(firstNameString, surnameString, USOSNumberInt, pointsIInt, pointsIIInt, pointsIInt + pointsIIInt, "brak");
+        Students student = new Students(firstNameString, surnameString, USOSNumberInt, pointsIInt, pointsIIInt, pointsIInt + pointsIIInt, "0");
         MarkJDBCDAO.dbConn.addStudent(student, numberSelection);
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
