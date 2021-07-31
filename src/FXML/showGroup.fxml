@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ShowGroup">
+   <children>
+      <TableView fx:id="tableView" editable="true" focusTraversable="false" layoutX="9.0" layoutY="35.0" prefHeight="445.0" prefWidth="635.0" />
+      <HBox layoutX="14.0" layoutY="521.0" prefHeight="28.0" prefWidth="625.0">
+         <children>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#addStudent" text="Dodaj studenta">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Separator prefHeight="1.0" prefWidth="44.0" visible="false" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#editStudent" text="Edytuj studenta">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Separator prefHeight="1.0" prefWidth="44.0" visible="false" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#removeStudent" text="Usuń studenta">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Separator prefHeight="1.0" prefWidth="44.0" visible="false" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#giveMark" text="Wystaw ocenę">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Separator prefHeight="1.0" prefWidth="44.0" visible="false" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#giveTwo" text="Wystaw 2">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+      <Button focusTraversable="false" layoutX="300.0" layoutY="561.0" mnemonicParsing="false" onAction="#goBack" text="Powrót">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="403.0" layoutY="492.0" text="Max punktów:" />
+      <TextField fx:id="maxPoints" focusTraversable="false" layoutX="486.0" layoutY="488.0" />
+      <Label layoutX="242.0" layoutY="14.0" text="Studenci zapisani do grupy:">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+   </children>
+</Pane>

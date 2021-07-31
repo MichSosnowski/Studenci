@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstPage">
+   <children>
+      <Label layoutX="21.0" layoutY="14.0" text="Wybierz jedną z poniższych grup:">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ListView fx:id="listView" focusTraversable="false" layoutX="21.0" layoutY="35.0" prefHeight="546.0" prefWidth="398.0" />
+      <Button focusTraversable="false" layoutX="445.0" layoutY="487.0" mnemonicParsing="false" onAction="#openAddDialog" prefHeight="25.0" prefWidth="184.0" text="Dodaj grupę studencką">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button focusTraversable="false" layoutX="445.0" layoutY="521.0" mnemonicParsing="false" onAction="#removeGroup" prefHeight="25.0" prefWidth="184.0" text="Usuń grupę studencką">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button focusTraversable="false" layoutX="445.0" layoutY="555.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="184.0" text="Zamknij aplikację">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</Pane>
